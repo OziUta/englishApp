@@ -7,26 +7,6 @@
 </head>
 <body>
     <h1>Hello</h1>
-    <script>
-    // Получаем объект WebApp
-    const tg = window.Telegram?.WebApp;
-
-    // Когда DOM готов
-    document.addEventListener("DOMContentLoaded", () => {
-      let userName = "Гость"; // значение по умолчанию
-
-      if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        const user = tg.initDataUnsafe.user;
-        // Собираем имя и фамилию
-        userName = [user.first_name  "", user.last_name  ""]
-                     .filter(Boolean)
-                     .join(" ");
-      }
-
-      // Выводим имя в заголовке
-      document.getElementById("greeting").textContent = "Привет, " + userName + "!";
-    });
-  </script>
 </body>
-
 </html>
+
