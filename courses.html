@@ -6,28 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <style>
+    /* Фон и базовые стили */
     body {
       margin: 0;
-      padding: 0;
-      height: 100vh;
+      padding: 20px;
       font-family: system-ui, Arial, sans-serif;
+      min-height: 100vh;
       /* Фоновая картинка */
       background-image: url('fon2.jpg');
-      background-size: cover;      /* картинка растягивается и сохраняет пропорции */
-      background-position: center; /* центрируем */
+      background-size: cover;
+      background-position: center;
       background-repeat: no-repeat;
       position: relative;
       color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+    }
+    /* Полупрозрачная маска для читаемости */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    /* Контент поверх маски */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     h1 {
       text-align: center;
-      color: #0088cc;
+      color: #fff;
       margin-bottom: 20px;
+      font-size: 28px;
     }
     .courses {
       display: grid;
@@ -35,7 +47,8 @@
       gap: 15px;
     }
     .course {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
       border-radius: 12px;
       padding: 15px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -48,7 +61,7 @@
     }
     .course:hover {
       transform: translateY(-2px);
-      background: #f0f8ff;
+      background: rgba(240, 248, 255, 0.95);
     }
     .title {
       font-size: 18px;
@@ -56,7 +69,6 @@
     }
     .desc {
       font-size: 14px;
-      color: #555;
       margin: 8px 0 12px 0;
     }
     .locked::after {
@@ -93,42 +105,39 @@
   </style>
 </head>
 <body>
-  <h1>Выберите курс</h1>
-  <div class="courses">
-    <!-- Бесплатный курс -->
-    <div class="course" onclick="openCourse('Начальный уровень')">
-      <div class="title">Начальный уровень</div>
-      <div class="desc">Базовые фразы и простые диалоги.</div>
-      <button>Открыть</button>
-    </div>
-    <!-- Платные курсы -->
-    <div class="course locked" onclick="buyCourse('Бизнес-английский')">
-      <div class="title">Бизнес-английский</div>
-      <div class="desc">Переписка, переговоры, деловое общение.</div>
-      <button>Купить</button>
-    </div>
-    <div class="course locked" onclick="buyCourse('IELTS/TOEFL')">
-      <div class="title">Подготовка к IELTS/TOEFL</div>
-      <div class="desc">Практика и советы для экзамена.</div>
-      <button>Купить</button>
+  <div class="content">
+    <h1>:books: Выберите курс</h1>
+    <div class="courses">
+      <!-- Бесплатный курс -->
+      <div class="course" onclick="openCourse('Начальный уровень')">
+        <div class="title">Начальный уровень</div>
+        <div class="desc">Базовые фразы и простые диалоги.</div>
+        <button>Открыть</button>
+      </div>
+      <!-- Платные курсы -->
+      <div class="course locked" onclick="buyCourse('Бизнес-английский')">
+        <div class="title">Бизнес-английский</div>
+        <div class="desc">Переписка, переговоры, деловое общение.</div>
+        <button>Купить</button>
+      </div>
+      <div class="course locked" onclick="buyCourse('IELTS/TOEFL')">
+        <div class="title">Подготовка к IELTS/TOEFL</div>
+        <div class="desc">Практика и советы для экзамена.</div>
+        <button>Купить</button>
+      </div>
     </div>
   </div>
   <script>
     let tg = window.Telegram.WebApp;
     tg.expand();
-    // Бесплатный курс
     function openCourse(name) {
       tg.sendData("open_" + name);
       alert("Вы открыли курс: " + name);
-      // Здесь можно добавить переход на страницу уроков
     }
-    // Платные курсы
     function buyCourse(name) {
       tg.sendData("buy_" + name);
       alert("Курс " + name + " доступен после оплаты :white_check_mark:");
     }
   </script>
 </body>
-
 </html>
-
