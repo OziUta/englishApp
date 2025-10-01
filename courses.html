@@ -8,10 +8,21 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      height: 100vh;
       font-family: system-ui, Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      /* Фоновая картинка */
+      background-image: url('fon2.jpg');
+      background-size: cover;      /* картинка растягивается и сохраняет пропорции */
+      background-position: center; /* центрируем */
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
     }
     h1 {
       text-align: center;
@@ -120,3 +131,4 @@
 </body>
 
 </html>
+
