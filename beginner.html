@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Начальный уровень</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, Arial, sans-serif;
+      min-height: 100vh;
+      /* Фоновая картинка */
+      background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1080&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
+    }
+    /* Полупрозрачная маска для читаемости текста */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #fff;
+    }
+    /* Меню */
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .menu button {
+      background: #0088cc;
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .menu button:hover {
+      background: #0077b3;
+    }
+    /* Адаптивность: кнопки в ряд на больших экранах */
+    @media (min-width: 600px) {
+      .menu {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .menu button {
+        flex: 1;
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Курс: Начальный уровень</h1>
+    <div class="menu">
+      <button onclick="openSection('Уроки')">Уроки</button>
+      <button onclick="openSection('Аудио')">Аудио</button>
+      <button onclick="openSection('Чтение')">Чтение</button>
+    </div>
+  </div>
+  <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    function openSection(section) {
+      tg.sendData("beginner_" + section); // отправляем сигнал боту
+      alert("Вы выбрали раздел: " + section);
+      // Здесь можно добавить переход к соответствующему контенту
+    }
+  </script>
+</body>
+</html>
