@@ -1,64 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini App</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            color: var(--tg-theme-text-color);
-            background-image: url("fon2.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-        .Main {
-            width: 100%;
-            padding: 25px;
-            text-align: center;
-
-        }
-
-        h1 {
-            margin-top: 40px;
-            margin-bottom: 10px;
-        }
-
-        img {
-            width: 70px;
-            margin: 30px auto;
-        }
-
-        .btn {
-            border: 0;
-            border-radius: 5px;
-            margin-top: 50px;
-            height: 60px;
-            width: 200px;
-            font-style: 20px;
-            font-weight: 500;
-            cursor: pointer;
-            color: blue;
-            background-color: red;
-        }
-        
-    </style>
+  <meta charset="UTF-8">
+  <title>English App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      font-family: system-ui, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 24px;
+      background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/English_language.svg/120px-English_language.svg.png") no-repeat center;
+      background-size: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    h1 {
+      color: #0088cc;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+    button {
+      background: #0088cc;
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 14px 30px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #0077b3;
+    }
+  </style>
 </head>
 <body>
-   <div class="Main">
-        <h1>Тестовое приложение</h1>
-        <img src="img/fon.jpg" alt="123">
-        <p></p>
-        <button class="btn">Кнопка</button>
-    </div>
+  <!-- Логотип -->
+  <div class="logo"></div>
+  <!-- Приветствие -->
+  <h1>Добро пожаловать!</h1>
+  <p>Изучай английский легко и удобно прямо в Telegram :books:</p>
+  <!-- Кнопка перехода -->
+  <button onclick="goNext()">Начать</button>
+  <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+    function goNext() {
+      // Здесь можно открыть другую страницу или переключить контент
+      // Вариант 1: открываем другую страницу
+      window.location.href = "courses.html";
+      // Вариант 2 (если всё в одном файле): прячем welcome и показываем список курсов
+      // document.body.innerHTML = "<h1>Список курсов</h1>";
+    }
+  </script>
 </body>
 </html>
+
 
 
 
