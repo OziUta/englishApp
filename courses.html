@@ -130,9 +130,9 @@
   <script>
     let tg = window.Telegram.WebApp;
     tg.expand();
-    function openCourse(name) {
-      tg.sendData("open_" + name);
-      alert("Вы открыли курс: " + name);
+    function openCourse() {
+      // Переход на следующую страницу с курсами
+      window.location.href = "beginner.html";
     }
     function buyCourse(name) {
       tg.sendData("buy_" + name);
@@ -141,3 +141,4 @@
   </script>
 </body>
 </html>
+
