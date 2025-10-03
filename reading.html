@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Чтение</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: system-ui, Arial, sans-serif;
+      min-height: 100vh;
+
+      /* Фоновая картинка */
+      background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1080&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      color: white;
+    }
+
+    /* Маска для читаемости */
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    /* Кнопка назад */
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      color: #0088cc;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    .back-button:hover {
+      background: #f0f0f0;
+    }
+
+    /* Сетка книг */
+    .books {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .book {
+      background: rgba(255,255,255,0.9);
+      color: #333;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .book:hover {
+      transform: translateY(-2px);
+      background: rgba(240,248,255,0.95);
+    }
+
+    .book-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .book-desc {
+      font-size: 14px;
+      margin-top: 5px;
+      color: #555;
+    }
+
+    /* Адаптивность */
+    @media (min-width: 600px) {
+      .books {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      .books {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- Кнопка назад -->
+    <button class="back-button" onclick="goBack()">←</button>
+
+    <h1>📖 Выберите историю для чтения</h1>
+
+    <div class="books">
+      <div class="book" onclick="openBook('The Little Prince')">
+        <div class="book-title">The Little Prince</div>
+        <div class="book-desc">Простая и вдохновляющая история для начинающих.</div>
+      </div>
+
+      <div class="book" onclick="openBook('Alice in Wonderland')">
+        <div class="book-title">Alice in Wonderland</div>
+        <div class="book-desc">Классика для изучения английского с фантазией.</div>
+      </div>
+
+      <div class="book" onclick="openBook('Short Stories for Beginners')">
+        <div class="book-title">Short Stories</div>
+        <div class="book-desc">Набор лёгких рассказов для чтения и практики.</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function openBook(name) {
+      tg.sendData("reading_" + name);
+      alert("Вы открыли книгу: " + name);
+      // здесь можно сделать переход на страницу самой книги
+    }
+
+    function goBack() {
+      window.location.href = "beginner.html";
+    }
+  </script>
+</body>
+</html>
