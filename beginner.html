@@ -103,16 +103,15 @@
     <div class="menu">
       <button onclick="openSection('Уроки')">Уроки</button>
       <button onclick="openSection('Аудио')">Аудио</button>
-      <button onclick="openSection('Чтение')">Чтение</button>
+      <button onclick="openRead('Чтение')">Чтение</button>
     </div>
   </div>
   <script>
     let tg = window.Telegram.WebApp;
     tg.expand();
-    function openSection(section) {
-      tg.sendData("beginner_" + section);
-      alert("Вы выбрали раздел: " + section);
-      // Здесь можно добавить переход к соответствующему контенту
+    function openRead() {
+      // Переход на следующую страницу с курсами
+      window.location.href = "reading.html";
     }
     function goBack() {
       window.location.href = "courses.html"; // возвращаемся к списку курсов
@@ -120,6 +119,7 @@
   </script>
 </body>
 </html>
+
 
 
 
